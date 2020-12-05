@@ -1,0 +1,102 @@
+<div class="row mt-4">
+  <div class="col-6 table table-striped">
+    <table width="100%">
+      <thead>
+        <th>Days</th>
+        <th>Price</th>
+      </thead>
+      <tbody *ngFor="let pass of skiPassList">
+        <td>{{ pass?.duration }}</td>
+        <td>{{ pass?.price }}</td>
+      </tbody>
+    </table>
+  </div>
+  <div class="col-6">
+    <form class="clearfix">
+      <div class="form-group mt-2">
+        <div class="input-group">
+          <label for="first_name" style="width: 20%">First Name</label>
+          <input
+            type="text"
+            name="first_name"
+            id="first_name"
+            style="width: 80%"
+            [(ngModel)]="reservation.first_name"
+          />
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <div class="input-group">
+          <label for="last_name" style="width: 20%">Last Name</label>
+          <input
+            type="text"
+            name="last_name"
+            id="last_name"
+            style="width: 80%"
+            [(ngModel)]="reservation.last_name"
+          />
+        </div>
+      </div>
+      <div class="form-group mt-2" style="width: 100%; display: inline-block">
+        <div class="input-group">
+          <label style="width: 20%">Date From:</label>
+          <input
+            style="width: 70%"
+            class="form-control p-2"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="dateFrom"
+            ngbDatepicker
+            #d="ngbDatepicker"
+            (dateSelect)="setDateFrom()"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary calendar"
+              (click)="d.toggle()"
+              type="button"
+            ><span class="far fa-calendar-alt"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-2" style="width: 100%; display: inline-block">
+        <div class="input-group">
+          <label style="width: 20%">Date To:</label>
+          <input
+            style="width: 60%"
+            class="form-control p-2"
+            placeholder="yyyy-mm-dd"
+            name="dp"
+            [(ngModel)]="dateTo"
+            ngbDatepicker
+            #b="ngbDatepicker"
+            (dateSelect)="setDateTo()"
+          />
+          <div class="input-group-append">
+            <button
+              class="btn btn-outline-secondary calendar"
+              (click)="b.toggle()"
+              type="button"
+            ><span class="far fa-calendar-alt"></span></button>
+          </div>
+        </div>
+      </div>
+      <div class="form-group mt-2">
+        <div class="input-group">
+          <label for="price" style="width: 20%">Price:</label>
+          <input
+            type="number"
+            name="price"
+            id="price"
+            readonly
+            style="width: 80%"
+            [(ngModel)]="reservation.price"
+          />
+        </div>
+      </div>
+      <button class="btn btn-primary mt-2 float-right" (click)="submitReservation()">
+        Submit
+      </button>
+    </form>
+  </div>
+</div>

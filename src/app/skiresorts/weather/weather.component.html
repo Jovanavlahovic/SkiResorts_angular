@@ -1,0 +1,9 @@
+<div class="row">
+    <div class="col-3 text-center" *ngFor="let w of weather">
+        <p><b>{{w?.date | date: 'd.M.y.'}}</b></p>
+        <img src="assets/images/weather/{{w?.outlook}}.png" alt="" width="100%">
+        <p>Min: {{w?.temperature_min}}</p>
+        <p>Max: {{w?.temperature_max}}</p>
+        <p>Wind: {{w?.wind}}</p>
+    </div>
+</div>
